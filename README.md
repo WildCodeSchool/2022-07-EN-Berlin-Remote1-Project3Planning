@@ -52,6 +52,7 @@ stateDiagram-v2
     reserved --> partial: An inspector fills some of the information
     partial --> reserved: An inspect re-reserves a case to fill in more information
     full --> quoted: A manager sends a quote to the customer
+    quoted --> [*]: A quote gets accepted or rejected by the customer
 ```
 
 ## Inspection data fields
