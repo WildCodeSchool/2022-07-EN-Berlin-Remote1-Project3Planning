@@ -40,20 +40,25 @@ Retr.                           :         des6, after des3 after des4 after des5
 ```mermaid
 stateDiagram-v2
     state "CASE CREATED" as created
-    state "CASE OWNED" as reserved
+    state "CASE ASSIGNED" as assigned
     state "CASE PARTIALLY-INSPECTED" as partial
     state "CASE FULLY-INSPECTED" as full
     state "CASE QUOTED" as quoted
     
-    [*] --> created: A manager creates a fresh case
-    created --> reserved: An inspector reserves and becomes the owner of the case
-    reserved --> created: The owning inspector releases the case before entering any data, the ownership revoked
-    reserved --> full: The owning inspector fills in all the information
-    reserved --> partial: The owning inspector fills in some of the information
-    partial --> partial: The owning inspect fills in more information
-    full --> quoted: A manager(*) sends a quote to the customer
-    quoted --> [*]: A quote gets accepted or rejected by the customer
+    [*] --> created: manager creates de-cluttering case
+    created --> assigned: manager assigns case to an inspector
+    assigned --> assigned: manager re-assigns case to another inspector
+    assigned --> full: AI(*) fills in all information
+    assigned --> partial: AI(*) fills in some of the information
+    partial --> partial: AI(*) fills in more information
+    partial --> partial: manager re-assigns case to another inspector
+    partial --> full: AI(*) fills in remaining information
+    full --> partial: manager invalidates some information
+    full --> quoted: manager sends a quote to customer
+    quoted --> [*]: quote is accepted or rejected by the customer
 ```
+
+(*): AI stands for the _assigned inspector_
 
 ## Inspection data fields
 
