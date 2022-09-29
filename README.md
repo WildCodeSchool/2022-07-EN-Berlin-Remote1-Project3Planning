@@ -33,7 +33,7 @@ Retr.                           :         des6, after des3 after des4 after des5
 ## User roles
 
 - _Manager_: is the user role capable of creating new cases
-- _Inspector_: is the user role capable of filling in "inspection data" into a case that had been assigned to them
+- _Inspector_: is the user role capable of filling in "inspection data" into a case that they reserved
 
 ## Case state diagram
 
