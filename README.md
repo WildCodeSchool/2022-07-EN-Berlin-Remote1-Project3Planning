@@ -39,19 +39,19 @@ Retr.                           :         des6, after des3 after des4 after des5
 
 ```mermaid
 stateDiagram-v2
-    state "CREATED  (a manager just created the case)" as created
-    state "RESERVED (an inspector expressed his intention to take-on the inspection)" as reserved
-    state "PARTIALLY-INSPECTED (some inspection data has been entered, some still missing)" as partial
-    state "FULLY-INSPECTED (all inspection information has been entered)" as full
-    state "QUOTED (customer sent a quote)" as quoted
+    state "CASE CREATED" as created
+    state "CASE OWNED" as reserved
+    state "CASE PARTIALLY-INSPECTED" as partial
+    state "CASE FULLY-INSPECTED" as full
+    state "CASE QUOTED" as quoted
     
     [*] --> created: A manager creates a fresh case
-    created --> reserved: An inspector reserves a freshly created case
-    reserved --> created: An inspector releases the case before entering any data
-    reserved --> full: An inspector fills all the information
-    reserved --> partial: An inspector fills some of the information
-    partial --> reserved: An inspect re-reserves a case to fill in more information
-    full --> quoted: A manager sends a quote to the customer
+    created --> reserved: An inspector reserves and becomes the owner of the case
+    reserved --> created: The owning inspector releases the case before entering any data, the ownership revoked
+    reserved --> full: The owning inspector fills in all the information
+    reserved --> partial: The owning inspector fills in some of the information
+    partial --> partial: The owning inspect fills in more information
+    full --> quoted: A manager(*) sends a quote to the customer
     quoted --> [*]: A quote gets accepted or rejected by the customer
 ```
 
