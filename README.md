@@ -10,7 +10,7 @@ gantt
 dateFormat  YYYY-MM-DD
 axisFormat  %W
 title GANTT Chart for the Development of a Fullstack Decluttering App for REMONIDS
-excludes weekends
+excludes weekends 2022-10-03
 
 section A section
 Negotiations                    :active,  des1, 2022-09-29, 2d
@@ -20,6 +20,9 @@ Backend skeleton                :         des4, after des2, 5d
 Dev environment (data, tests)   :         des5, after des2, 5d
 Retr.                           :         des6, after des3 after des4 after des5, 1d
 ```
+
+> National holidays:
+> - Monday 03.10.2022 (Week 40) -_Day of German Unity_
 
 ## Teams
 
