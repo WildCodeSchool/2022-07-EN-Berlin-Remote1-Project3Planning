@@ -35,6 +35,25 @@ Retr.                           :         des6, after des3 after des4 after des5
 - _Manager_: is the user role capable of creating new cases
 - _Inspector_: is the user role capable of filling in "inspection data" into a case that had been assigned to them
 
+## Case state diagram
+
+```mermaid
+stateDiagram-v2
+    state "CREATED  (a manager just created the case)" as created
+    state "RESERVED (an inspector expressed his intention to take-on the inspection)" as reserved
+    state "PARTIALLY-INSPECTED (some inspection data has been entered, some still missing)" as partial
+    state "FULLY-INSPECTED (all inspection information has been entered)" as full
+    state "QUOTED (customer sent a quote)" as quoted
+    
+    [*] --> created: A manager creates a fresh case
+    created --> reserved: An inspector reserves a freshly created case
+    reserved --> created: An inspector releases the case before entering any data
+    reserved --> full: An inspector fills all the information
+    reserved --> partial: An inspector fills some of the information
+    partial --> reserved: An inspect re-reserves a case to fill in more information
+    full --> quoted: A manager sends a quote to the customer
+```
+
 ## Inspection data fields
 
 _TODO_
