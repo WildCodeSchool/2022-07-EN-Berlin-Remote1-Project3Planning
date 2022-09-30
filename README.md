@@ -44,6 +44,7 @@ Retr.                           :         des6, after des3 after des4 after des5
 stateDiagram-v2
     state "CASE CREATED" as created
     state "CASE ASSIGNED" as assigned
+    state "CASE CONFIRMED" as confirmed
     state "CASE PARTIALLY-INSPECTED" as partial
     state "CASE FULLY-INSPECTED" as full
     state "CASE QUOTED" as quoted
@@ -52,10 +53,10 @@ stateDiagram-v2
     created --> assigned: manager assigns case to one inspector\n(named the assigned inspector or "AI")
     assigned --> created: AI(*) declines assignement
     assigned --> assigned: manager re-assigns case
-    assigned --> full: AI(*) fills in\nall information
-    assigned --> partial: AI(*) fills in some\ninformation
+    assigned --> confirmed: AI(*) accepts assignment
+    confirmed --> full: AI(*) fills in\nall information
+    confirmed --> partial: AI(*) fills in some\ninformation
     partial --> partial: AI(*) fills in more\ninformation
-    partial --> partial: manager re-assigns case
     partial --> full: AI(*) fills in\nremaining information
     full --> partial: manager invalidates\nsome information
     full --> quoted: manager sends a quote to customer
