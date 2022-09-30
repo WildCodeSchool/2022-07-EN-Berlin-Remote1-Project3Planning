@@ -49,14 +49,15 @@ stateDiagram-v2
     state "CASE QUOTED" as quoted
     
     [*] --> created: manager creates de-cluttering case
-    created --> assigned: manager assigns case to an inspector (called the assigned inspector or "AI" for short)
-    assigned --> assigned: manager re-assigns case to a new inspector
-    assigned --> full: AI(*) fills in all information
-    assigned --> partial: AI(*) fills in some of the information
-    partial --> partial: AI(*) fills in more information
-    partial --> partial: manager re-assigns case to a new inspector
-    partial --> full: AI(*) fills in remaining information
-    full --> partial: manager invalidates some information
+    created --> assigned: manager assigns case to one inspector\n(named the assigned inspector or "AI")
+    assigned --> created: AI(*) declines assignement
+    assigned --> assigned: manager re-assigns case
+    assigned --> full: AI(*) fills in\nall information
+    assigned --> partial: AI(*) fills in some\ninformation
+    partial --> partial: AI(*) fills in more\ninformation
+    partial --> partial: manager re-assigns case
+    partial --> full: AI(*) fills in\nremaining information
+    full --> partial: manager invalidates\nsome information
     full --> quoted: manager sends a quote to customer
     quoted --> [*]: quote is accepted or rejected by the customer
 ```
