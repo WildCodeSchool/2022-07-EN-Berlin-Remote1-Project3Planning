@@ -35,10 +35,30 @@ Retr.                           :         des6, after des3 after des4 after des5
 
 ## User roles
 
-- _Manager_: is the user role capable of creating new cases
-- _Inspector_: is the user role capable of filling in "inspection data" into a case that they reserved
+User roles are defined as a sets of distinct user permissions.
+
+Some examples of user permissions are:
+- _The permission to_ create a new de-cluttering case
+- _The permission to_ assign an existing de-cluttering case to an inspector
+- _The permission to_ reject a case that had been assigned to the user by another user
+
+### Role descriptions
+
+- _Manager_: is the user role capable of creating new de-cluttering cases
+- _Inspector_: is the user role capable of filling in "inspection information" into a de-cluttering case that he/she is assigned to
+
+### Venn diagram
+
+<img src='./user_roles-venn.drawio.svg' width='500px' alt='Venn diagrams of user roles in the application'>
+
+#### Definitions
+
+- _manager rights_: Are the user permissions acquired by the manager role, but not the inspector role
+- _inspector rights_: Are the user permissions acquired by both the manager role and the inspector role
 
 ## Case state diagram
+
+The following diagram illustrates the different states that a _de-cluttering case_ can be in throughout its lifecyle in the de-cluttering fullstack application being developed.
 
 ```mermaid
 stateDiagram-v2
@@ -57,15 +77,26 @@ stateDiagram-v2
     confirmed --> full: AI(*) fills in\nall information
     confirmed --> partial: AI(*) fills in some\ninformation
     partial --> partial: AI(*) fills in more\ninformation
-    partial --> full: AI(*) fills in\nremaining information
+    partial --> full: AI(*) fills in missing or\nremaining information
     full --> partial: manager invalidates\nsome information
-    full --> quoted: manager sends a quote to customer
-    quoted --> [*]: quote is accepted or rejected by the customer
+    full --> quoted: manager sends quote to household owner
+    quoted --> [*]: quote is accepted or rejected by household owner\n(this is not managed be the fullstack application)
 ```
-
 (*): AI stands for the _assigned inspector_
 
-## Inspection data fields
+### Notes
+
+The starting and ending points of the state diagram (i.e. the two _terminal points_ above) encompass the _scope_ of the fullstack application which is being developed.
+
+Namely, the following things are outside the scope of the fullstack application:
+- Getting de-cluttering leads/contacts
+- Issuing de-cluttering quotes
+- Following up on issued quoted and re-issuing altered quotes
+- Payment collection and de-cluttering confirmation
+- Planning and execution of the de-cluttering itself
+- Any later procedures following the de-cluttering itself
+
+## Inspection information
 
 _TODO_
 
