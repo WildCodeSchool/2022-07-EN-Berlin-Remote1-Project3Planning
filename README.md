@@ -49,7 +49,7 @@ Some examples of user permissions are:
 
 ### Venn diagram
 
-<img src='./user_roles-venn.drawio.svg' width='500px' alt='Venn diagrams of user roles in the application'>
+<img src='./user_roles-venn.drawio.svg' height='185px' alt='Venn diagrams of user roles in the application'>
 
 #### Definitions
 
