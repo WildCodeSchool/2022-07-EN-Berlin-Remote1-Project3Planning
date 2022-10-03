@@ -35,12 +35,18 @@ Retr.                           :         des6, after des3 after des4 after des5
 
 ## User roles
 
-User roles are defined as a sets of distinct user permissions.
+A person can only make use of the fullstack application by having a user account, which assigns the "user" (i.e. person in charge of the account) to a specific "user role".
 
-Some examples of user permissions are:
-- _The permission to_ create a new de-cluttering case
-- _The permission to_ assign an existing de-cluttering case to an inspector
-- _The permission to_ reject a case that had been assigned to the user by another user
+Technically speaking, a _user role_ is a collection of user permissions on the app.
+
+Some examples of permissions are:
+- _The permission to_ create a new de-cluttering case in the app
+- _The permission to_ assign an existing de-cluttering case to a user in the app
+- _The permission to_ reject a case that had been assigned to the user by another user in the app
+
+> _Note that when decribing permissions, it is important to maintain a role-agnostic wording_ (e.g. the user, another user, etc.).
+> 
+> This way, the permissions _remain independent from the user roles,_ allowing us to change the mapping between the two as needed in response to change in the user requirements.
 
 ### Role descriptions
 
