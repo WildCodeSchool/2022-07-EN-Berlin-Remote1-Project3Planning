@@ -43,6 +43,7 @@ Some examples of permissions are:
 - _The permission to_ create a new de-cluttering case in the app
 - _The permission to_ assign an existing de-cluttering case to a user in the app
 - _The permission to_ reject a case that had been assigned to the user by another user in the app
+- _The permission to_ delete a user account and all of the cases associated with the user account
 
 > _Note that when decribing permissions, it is important to maintain a role-agnostic wording_ (e.g. the user, another user, etc.).
 > 
@@ -59,12 +60,45 @@ Some examples of permissions are:
 
 #### Definitions
 
+- _developer rights_: Are the user permissions not granted to any user role in the app
 - _manager rights_: Are the user permissions acquired by the manager role, but not the inspector role
 - _inspector rights_: Are the user permissions acquired by both the manager role and the inspector role
 
-## Case state diagram
+## State-machine descriptions
 
-The following diagram illustrates the different states that a _de-cluttering case_ can be in throughout its lifecyle in the de-cluttering fullstack application being developed.
+Many systems can be modelled as _state machines_. Despite the name, a system that is modelled as a state machine does not need to be implented in hardware (i.e. as a physical machine). Namely, it is just for us to describe _deterministic behavior_ in a very clear and an unambiguous way.
+
+The fullstack application to be developed have two main types of statefull entitites:
+1. User accounts
+2. De-cluttering cases
+
+The behavior of these entities is described using two state diagrams, in the following subsections.
+
+### User account states
+
+The following diagram illustrates the different states of a _user account_, regardless of the user role assigned to this account.
+
+```mermaid
+stateDiagram-v2
+    state "USER CREATED" as created
+    state "USER CONFIRMED" as confirmed
+    state "USER ACTIVE" as active
+    state "USER INACTIVE" as inactive
+    
+    [*] --> created: a user account is created with\nan unconfirmed email address
+    created --> confirmed: user confirms the email\naddress by opening the link
+    confirmed --> inactive: user provides password
+    inactive --> active: user toggles activity in app
+    active --> inactive: user toggles activity in app
+    active --> [*]: user is deleted by developer
+    inactive --> [*]: user is deleted by developer
+```
+
+### De-cluettering case states
+
+The following diagram illustrates the different states that a _de-cluttering case_, and the transitions from and to the different states based on the interactions between the users of the platform and the case in the diagram.
+
+Note that the diagram focusses on the lifecycle of the _de-cluttering_ within the scope of the fullstack application being developed, only. Namely, we are only concerned with the states of the case as it lives through the fullstack application. 
 
 ```mermaid
 stateDiagram-v2
@@ -74,6 +108,7 @@ stateDiagram-v2
     state "CASE PARTIALLY-INSPECTED" as partial
     state "CASE FULLY-INSPECTED" as full
     state "CASE QUOTED" as quoted
+    state "CASE CLOSED" as closed
     
     [*] --> created: manager creates de-cluttering case
     created --> assigned: manager assigns case to one inspector\n(named the assigned inspector or "AI")
@@ -86,9 +121,19 @@ stateDiagram-v2
     partial --> full: AI(*) fills in missing or\nremaining information
     full --> partial: manager invalidates\nsome information
     full --> quoted: manager sends quote to household owner
+    created --> closed: manager\ncloses\ncase
+    assigned --> closed: manager\ncloses\ncase
+    confirmed --> closed: manager\ncloses\ncase
+    partial --> closed: manager\ncloses\ncase
+    full --> closed: manager\ncloses\ncase
+    closed --> [*]: quote is closed for whatever reason
     quoted --> [*]: quote is accepted or rejected by household owner\n(this is not managed be the fullstack application)
 ```
 (*): AI stands for the _assigned inspector_
+
+#### Interactive state diagram
+
+<iframe src="https://stately.ai/viz/embed/ad155a1a-e26d-4b6a-ad5c-4b0fd3e47475?mode=viz&panel=code&readOnly=1&showOriginalLink=1&controls=0&pan=0&zoom=0" sandbox="allow-same-origin allow-scripts"></iframe>
 
 ### Notes
 
