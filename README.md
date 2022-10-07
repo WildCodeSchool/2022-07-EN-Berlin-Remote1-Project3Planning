@@ -1,4 +1,7 @@
-KANBAN LINK: https://github.com/orgs/WildCodeSchool/projects/37
+# Links
+
+1. Kanban link (Project on GitHub): https://github.com/orgs/WildCodeSchool/projects/37
+2. Backend repository: https://github.com/WildCodeSchool/2022-07-EN-Berlin-Remote1-Project3Backend
 
 # 2022-07-EN-Berlin-Remote1-Project3Planning
 Contains the planning and the design documentation for the industry project with REMONDIS group.
