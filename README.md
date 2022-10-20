@@ -3,6 +3,7 @@
 1. Kanban link (Project on GitHub): https://github.com/orgs/WildCodeSchool/projects/37
 2. Backend repository: https://github.com/WildCodeSchool/2022-07-EN-Berlin-Remote1-Project3Backend
 3. Frontend repository: https://github.com/WildCodeSchool/2022-07-EN-Berlin-Remote1-Project3Frontend
+4. Provisional REST API endpoints: https://fastify-swagger-api.glitch.me/docs/static/index.html#/
 
 # 2022-07-EN-Berlin-Remote1-Project3Planning
 Contains the planning and the design documentation for the industry project with REMONDIS group.
@@ -99,6 +100,44 @@ stateDiagram-v2
     active --> [*]: user is deleted by developer
     inactive --> [*]: user is deleted by developer
 ```
+
+#### Account creation/redemption sequence diagrams
+
+```mermaid
+sequenceDiagram
+    Note right of Frontend: User enters email and clicks 'register' 
+    Frontend->>+Backend: [API Endpoint] /users/register {email}
+    Backend->>-Email: [Action] sends email with confirmation link
+    Note left of Email: User clicks on confirmation link
+    Email->>+Backend: [API Endpoint] /users/{id}/confirmation?token=xxx
+    Note right of Backend: Backend checks if token is valid
+    Backend->>Frontend: HTTP Redirect to Frontend route for expired token
+    Backend->>-Frontend: HTTP Redirect to Frontend route for continued registration {token}
+    Note right of Frontend: User fills in user data and password
+    Frontend->>+Backend: [API Endpoint] /users/{id}/confirm {...data, token}
+    Backend->>Frontend: Success message
+    Backend->>-Frontend: Failure message
+```
+
+```mermaid
+sequenceDiagram
+    Note right of Frontend: User enters email and clicks 'forgot password' 
+    Frontend->>+Backend: [API Endpoint] /users/{id}/forgotPassword {email}
+    Backend->>-Email: [Action] sends email with password reset link
+    Note left of Email: User clicks on password reset link
+    Email->>Frontend: HTTP Redirect to Frontend route for password reset
+    Frontend->>+Backend: [API Endpoint] /users/{id}/validateToken {token}
+    Note right of Backend: Backend checks if token is valid
+    Backend->>Frontend: Token is invalid
+    Note right of Frontend: Frontend display error message (token expired)
+    Backend->>-Frontend: Token is valid
+    Frontend->>+Backend: [API Endpoint] /users/{id}/resetPassword {password, token}
+    Backend->>Frontend: Failure message
+    Note right of Frontend: Frontend display error message (unexpected error)
+    Backend->>-Frontend: Success message
+    Note right of Frontend: Frontend displays success message (password changed)
+```
+
 
 ### De-cluettering case states
 
