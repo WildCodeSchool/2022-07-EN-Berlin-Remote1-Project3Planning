@@ -26,6 +26,9 @@ Frontend skeleton               :         des3, after des2, 5d
 Backend skeleton                :         des4, after des2, 5d
 Dev environment (data, tests)   :         des5, after des2, 5d
 Retr.                           :         des6, after des3 after des4 after des5, 1d
+System design revision          :         des7, after des6, 4d
+Figma design.                   :         des8, after des6, 4d
+Database schema                 :         des8, after des6, 4d
 ```
 
 > National holidays:
