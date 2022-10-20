@@ -176,6 +176,8 @@ erDiagram
     CASES ||--o{ CASE_HISTORY : "can have"
     CASE_HISTORY o{--|| CASE_STATES : use
     CASE_HISTORY o{--|| USERS : use
+    CASES ||--o{ CASE_PHOTOS : "can have"
+    CASE_ITEMS ||--o{ CASE_PHOTOS : "can have"
     
     
     USERS {
@@ -209,8 +211,6 @@ erDiagram
         int inspector_id FK
     }
     
-    
-    
     CASE_ITEMS{
         int id PK
         int case_id FK
@@ -218,6 +218,13 @@ erDiagram
         string room_title
         string description
         int quantity
+    }
+    
+    CASE_PHOTOS{
+        int id PK
+        int case_id FK
+        int room_id FK
+        blob photo
     }
     
     CASE_STATES{
