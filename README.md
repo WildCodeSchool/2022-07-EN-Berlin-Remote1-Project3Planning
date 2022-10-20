@@ -195,6 +195,9 @@ erDiagram
     
     CASES {
         int id PK
+        date_time create_time
+        date_time assigned_time
+        date_time confirmed_time
         string client_first_name
         string client_last_name
         string client_last_email
