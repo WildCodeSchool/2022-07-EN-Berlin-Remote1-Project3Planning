@@ -139,7 +139,84 @@ stateDiagram-v2
 
 #### Interactive state diagram
 
-<iframe src="https://stately.ai/viz/embed/ad155a1a-e26d-4b6a-ad5c-4b0fd3e47475?mode=viz&panel=code&readOnly=1&showOriginalLink=1&controls=0&pan=0&zoom=0" sandbox="allow-same-origin allow-scripts"></iframe>
+Can be found at [this link](https://stately.ai/registry/editor/313df10f-254d-43a4-8347-84590a893cd4?machineId=0a5c01b4-2652-4178-a2ef-1fd5db6a0657) (Press the _simulate_ button on the page to see how this works)
+
+#### XSTATE State Machine Description
+
+```typescript
+createMachine({
+      "id": "Decluttering-Case State Diagram",
+  "initial": "Created",
+  "states": {
+    "Created": {
+      "on": {
+        "Manager assigns case": {
+          "target": "Assigned"
+        },
+        "Manager closes": {
+          "target": "Closed"
+        }
+      }
+    },
+    "Assigned": {
+      "on": {
+        "Inspector declines": {
+          "target": "Created"
+        },
+        "Inspector accepts": {
+          "target": "Confirmed"
+        },
+        "Manager closes": {
+          "target": "Closed"
+        },
+        "Manager reassigns": {}
+      }
+    },
+    "Confirmed": {
+      "on": {
+        "Inspector completes data": {
+          "target": "Ready"
+        },
+        "Inspector fills data": {
+          "target": "Ongoing"
+        },
+        "Manager closes": {
+          "target": "Closed"
+        }
+      }
+    },
+    "Closed": {},
+    "Ongoing": {
+      "on": {
+        "Inspector completes data": {
+          "target": "Ready"
+        },
+        "Manager closes": {
+          "target": "Closed"
+        }
+      }
+    },
+    "Ready": {
+      "on": {
+        "Manager sends quote": {
+          "target": "Quoted"
+        }
+      }
+    },
+    "Quoted": {}
+  }
+,
+    schema: {
+      context: {} as {
+        
+      },
+      events: {} as {"type": "Manager assigns case"}| {"type": "Manager sends quote"}| {"type": "Inspector completes data"}| {"type": "Inspector declines"}| {"type": "Inspector accepts"}| {"type": "Manager closes"}| {"type": "Inspector fills data"}| {"type": "Manager reassigns"}
+    },
+   context: {},
+   predictableActionArguments: true,
+   preserveActionOrder: true,
+  })
+```
 
 ### Notes
 
@@ -259,7 +336,5 @@ erDiagram
         jsonb case_data
         
     }
-    
-    
 ```
 
