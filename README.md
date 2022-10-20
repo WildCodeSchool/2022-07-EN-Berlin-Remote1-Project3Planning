@@ -303,7 +303,7 @@ erDiagram
     CASE_PHOTOS{
         int id PK
         int case_id FK
-        int room_id FK
+        int room FK
         blob photo
     }
     
