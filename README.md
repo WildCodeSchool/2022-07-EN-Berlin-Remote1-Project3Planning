@@ -245,7 +245,7 @@ _IN_PROGRESS_
 
 ```mermaid
 erDiagram
-
+    
     USERS ||--o{ CASES : create
     CASES ||--o{ CASE_ITEMS : contain
     CASES o{--|| CASE_STATES : use
@@ -259,28 +259,28 @@ erDiagram
     
     
     USERS {
-        int id PK
+        int id PK  "NOT_NULL"
         string username
-        string email
+        string email "NOT_NULL"
         string hash_password
         string role
         string state
         string token
-        date_time created_time
+        date_time created_time "NOT_NULL"
         date_time confirmed_time
 
     }
     
     CASES {
-        int id PK
-        date_time create_time
+        int id PK  "NOT_NULL"
+        date_time create_time  "NOT_NULL"
         date_time assigned_time
-        date_time confirmed_time
+        date_time agreeded_time
         string client_first_name
         string client_last_name
-        string client_last_email
-        string client_last_phone
-        string address
+        string client_email  "NOT_NULL"
+        string client_last_phone "NOT_NULL"
+        string address  "NOT_NULL"
         int floor
         int elevator
         float squaremeters
@@ -293,9 +293,9 @@ erDiagram
     }
     
     CASE_ITEMS{
-        int id PK
-        int case_id FK
-        int room
+        int id PK  "NOT_NULL"
+        int case_id FK  "NOT_NULL"
+        int room "NOT_NULL"
         string room_title
         string description
         int quantity
@@ -309,30 +309,30 @@ erDiagram
     }
     
     CASE_STATES{
-        int id PK
-        string title
+        int id PK "NOT_NULL"
+        string title "NOT_NULL"
     }
     
     TYPE_OF_PROPERTIES{
-        int id PK
-        string title
+        int id PK "NOT_NULL"
+        string title "NOT_NULL"
     }
     
     APPOINTMENTS{
-        int id PK
-        date date
-        time time_from
-        time time_to
-        int case_id FK
+        int id PK  "NOT_NULL"
+        date date  "NOT_NULL"
+        time time_from  "NOT_NULL"
+        time time_to  "NOT_NULL"
+        int case_id FK  "NOT_NULL"
     }
     
     CASE_HISTORY{
-        int id PK
-        date_time create_time
-        int case_id FK
-        int case_state_id FK
-        int case_new_state_id FK
-        int user_id FK
+        int id PK  "NOT_NULL"
+        date_time time  "NOT_NULL"
+        int case_id FK  "NOT_NULL"
+        int case_state_id FK  "NOT_NULL"
+        int case_new_state_id FK  "NOT_NULL"
+        int user_id FK  "NOT_NULL"
         string description
         jsonb case_data
         
