@@ -163,4 +163,93 @@ To be provided using OpenAPI (i.e. Swagger).
 
 ## Database Schema
 
-_TODO_
+_IN_PROGRESS_
+
+```mermaid
+erDiagram
+
+    USERS ||--o{ CASES : create
+    CASES ||--o{ CASE_ITEMS : contain
+    CASES o{--|| CASE_STATES : use
+    CASES o{--|| TYPE_OF_PROPERTIES : use
+    CASES ||--o{ APPOINTMENTS : "can have"
+    CASES ||--o{ CASE_HISTORY : "can have"
+    CASE_HISTORY o{--|| CASE_STATES : use
+    CASE_HISTORY o{--|| USERS : use
+    
+    
+    USERS {
+        int id PK
+        string username
+        string email
+        string hash_password
+        string role
+        string state
+        string token
+        date_time created_time
+        date_time confirmed_time
+
+    }
+    
+    CASES {
+        int id PK
+        string client_first_name
+        string client_last_name
+        string client_last_email
+        string client_last_phone
+        string address
+        int floor
+        int elevator
+        float squaremeters
+        int quantity
+        string way_to_property
+        int type_of_property_id FK
+        int state_id FK
+        int manager_id FK
+        int inspector_id FK
+    }
+    
+    
+    
+    CASE_ITEMS{
+        int id PK
+        int case_id FK
+        int room
+        string room_title
+        string description
+        int quantity
+    }
+    
+    CASE_STATES{
+        int id PK
+        string title
+    }
+    
+    TYPE_OF_PROPERTIES{
+        int id PK
+        string title
+    }
+    
+    APPOINTMENTS{
+        int id PK
+        date date
+        time time_from
+        time time_to
+        int case_id FK
+    }
+    
+    CASE_HISTORY{
+        int id PK
+        date_time create_time
+        int case_id FK
+        int case_state_id FK
+        int case_new_state_id FK
+        int user_id FK
+        string description
+        jsonb case_data
+        
+    }
+    
+    
+```
+
