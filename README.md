@@ -237,6 +237,7 @@ _TODO_
 ## REST API design
 
 To be provided using OpenAPI (i.e. Swagger).
+Find documentation [here](https://fastify-swagger-api.glitch.me/docs/static/index.html)
 
 ## Database Schema
 
