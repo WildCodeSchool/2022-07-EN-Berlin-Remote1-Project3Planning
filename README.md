@@ -286,6 +286,8 @@ Find documentation [here](https://fastify-swagger-api.glitch.me/docs/static/inde
 _IN_PROGRESS_
 
 ```mermaid
+
+%%{init: {'theme':'base'}}%%
 erDiagram
     
     USERS ||--o{ CASES : create
