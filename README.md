@@ -167,7 +167,6 @@ stateDiagram-v2
     confirmed --> ongoing: AI(*) fills in some\ninformation
     ongoing --> ongoing: AI(*) fills in more\ninformation
     ongoing --> ready: AI(*) fills in missing or\nremaining information
-    ready --> ongoing: manager invalidates\nsome information
     ready --> quoted: manager sends quote to household owner
     created --> closed: manager\ncloses\ncase
     assigned --> closed: manager\ncloses\ncase
