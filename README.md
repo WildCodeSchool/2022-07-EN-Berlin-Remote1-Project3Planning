@@ -4,6 +4,7 @@
 2. Backend repository: https://github.com/WildCodeSchool/2022-07-EN-Berlin-Remote1-Project3Backend
 3. Frontend repository: https://github.com/WildCodeSchool/2022-07-EN-Berlin-Remote1-Project3Frontend
 4. Provisional REST API endpoints: https://fastify-swagger-api.glitch.me/docs/static/index.html#/
+5. Design in Figma: https://www.figma.com/file/nYlgCL7yWXHEcpTHgwzYgu/Untitled?node-id=0%3A1
 
 # 2022-07-EN-Berlin-Remote1-Project3Planning
 Contains the planning and the design documentation for the industry project with REMONDIS group.
