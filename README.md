@@ -299,6 +299,9 @@ erDiagram
     CASE_HISTORY o{--|| CASE_STATES : use
     CASE_HISTORY o{--|| USERS : use
     CASE_ITEMS ||--o{ CASE_PHOTOS : "can have"
+    TRANSITIONS ||--o| TRANSITION_ACCESS: "can have"
+    TRANSITION_ACCESS o{--o{ USERS: "use"
+    TRANSITIONS o{--|| CASE_STATES : use
     
     
     USERS {
@@ -379,6 +382,17 @@ erDiagram
         string description
         jsonb case_data
         
+    }
+    
+    TRANSITIONS{
+        int id PK "NOT_NULL"
+        int state_id "NOT_NULL"
+        int next_state_id "NOT_NULL"
+    }
+    
+    TRANSITION_ACCESS{
+        string role "PK role + transition_id"
+        int transition_id FK
     }
 ```
 
