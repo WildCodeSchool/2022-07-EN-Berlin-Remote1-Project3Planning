@@ -322,7 +322,7 @@ erDiagram
         string client_first_name
         string client_last_name
         string client_email  "NOT_NULL"
-        string client_last_phone "NOT_NULL"
+        string client_phone "NOT_NULL"
         string address  "NOT_NULL"
         int floor
         int elevator
