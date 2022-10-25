@@ -298,7 +298,6 @@ erDiagram
     CASES ||--o{ CASE_HISTORY : "can have"
     CASE_HISTORY o{--|| CASE_STATES : use
     CASE_HISTORY o{--|| USERS : use
-    CASES ||--o{ CASE_PHOTOS : "can have"
     CASE_ITEMS ||--o{ CASE_PHOTOS : "can have"
     
     
