@@ -153,8 +153,8 @@ stateDiagram-v2
     state "CASE CREATED" as created
     state "CASE ASSIGNED" as assigned
     state "CASE CONFIRMED" as confirmed
-    state "CASE PARTIALLY-INSPECTED" as partial
-    state "CASE FULLY-INSPECTED" as full
+    state "CASE ONGOING" as ongoing
+    state "CASE READY" as ready
     state "CASE QUOTED" as quoted
     state "CASE CLOSED" as closed
     
@@ -163,17 +163,17 @@ stateDiagram-v2
     assigned --> created: AI(*) declines assignement
     assigned --> assigned: manager re-assigns case
     assigned --> confirmed: AI(*) accepts assignment
-    confirmed --> full: AI(*) fills in\nall information
-    confirmed --> partial: AI(*) fills in some\ninformation
-    partial --> partial: AI(*) fills in more\ninformation
-    partial --> full: AI(*) fills in missing or\nremaining information
-    full --> partial: manager invalidates\nsome information
-    full --> quoted: manager sends quote to household owner
+    confirmed --> ready: AI(*) fills in\nall information
+    confirmed --> ongoing: AI(*) fills in some\ninformation
+    ongoing --> ongoing: AI(*) fills in more\ninformation
+    ongoing --> ready: AI(*) fills in missing or\nremaining information
+    ready --> ongoing: manager invalidates\nsome information
+    ready --> quoted: manager sends quote to household owner
     created --> closed: manager\ncloses\ncase
     assigned --> closed: manager\ncloses\ncase
     confirmed --> closed: manager\ncloses\ncase
-    partial --> closed: manager\ncloses\ncase
-    full --> closed: manager\ncloses\ncase
+    ongoing --> closed: manager\ncloses\ncase
+    ready --> closed: manager\ncloses\ncase
     closed --> [*]: quote is closed for whatever reason
     quoted --> [*]: quote is accepted or rejected by household owner\n(this is not managed be the fullstack application)
 ```
