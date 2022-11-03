@@ -1,10 +1,12 @@
 # Links
 
 1. Kanban link (Project on GitHub): https://github.com/orgs/WildCodeSchool/projects/37
-2. Backend repository: https://github.com/WildCodeSchool/2022-07-EN-Berlin-Remote1-Project3Backend
-3. Frontend repository: https://github.com/WildCodeSchool/2022-07-EN-Berlin-Remote1-Project3Frontend
-4. Provisional REST API endpoints: https://fastify-swagger-api.glitch.me/docs/static/index.html#/
-5. Design in Figma: https://www.figma.com/file/nYlgCL7yWXHEcpTHgwzYgu/Untitled?node-id=0%3A1
+1. Backend repository: https://github.com/WildCodeSchool/2022-07-EN-Berlin-Remote1-Project3Backend
+1. Frontend repository: https://github.com/WildCodeSchool/2022-07-EN-Berlin-Remote1-Project3Frontend
+1. Backend mediator function descriptions: [link to document in this repo](./backend_mediator_functions.md)
+1. Schema documentation: https://arkadiyshin.github.io/prisma-template/
+1. Provisional REST API endpoints: https://fastify-swagger-api.glitch.me/docs/static/index.html#/
+1. Design in Figma: https://www.figma.com/file/nYlgCL7yWXHEcpTHgwzYgu/Untitled?node-id=0%3A1
 
 # 2022-07-EN-Berlin-Remote1-Project3Planning
 Contains the planning and the design documentation for the industry project with REMONDIS group.
@@ -18,22 +20,35 @@ gantt
 dateFormat  YYYY-MM-DD
 axisFormat  %W
 title GANTT Chart for the Development of a Fullstack Decluttering App for REMONIDS
-excludes weekends 2022-10-03
+excludes weekends 2022-10-03 2022-11-01 2022-10-21 2022-10-26 2022-10-27 2022-10-28
 
-section A section
-Negotiations                    :active,  des1, 2022-09-29, 2d
-Design (API and data)           :         des2, after des1, 4d
-Frontend skeleton               :         des3, after des2, 5d
-Backend skeleton                :         des4, after des2, 5d
-Dev environment (data, tests)   :         des5, after des2, 5d
-Retr.                           :         des6, after des3 after des4 after des5, 1d
-System design revision          :         des7, after des6, 4d
-Figma design.                   :         des8, after des6, 4d
-Database schema                 :         des8, after des6, 4d
+section Backend & Database
+
+Schema (mermaid)            :done, db_mermaid, 2022-10-18, 3d
+Schema (prisma)             :done, db_prisma, after db_mermaid, 3d
+Backend mock data           :done, mockdata, 2022-10-31, 2d
+Backend mediator functions  :crit, done, api_mediator_functions, 2022-10-18, 8d
+
+
+section Frontend
+
+transition to using mediator functions     :crit, active,   refactor_api, after db_prisma after mockdata after api_mediator_functions, 2d
+Figma wireframes                :done     figma_wireframe, 2022-10-18, 5d
+refactor styles                 :active   refactor_style, after figma_wireframe, 3d
+
+section Organization
+
+Update call                     : update1, after refactor_style after refactor_api, 1d
+
 ```
 
 > National holidays:
 > - Monday 03.10.2022 (Week 40) -_Day of German Unity_
+> - Tuesday 01.11.2022 (Week 44) -_Day of German Unity_
+
+> Study events (not available for project work):
+> - Friday 21.10.2022 -_Checkpoint 3_ (Week 42)
+> - Wednesday-Friday 26.10.2022-28.10.2022 -_Gamejam Hackathon_ (Week 43)
 
 ## Teams
 
@@ -105,7 +120,7 @@ stateDiagram-v2
     inactive --> [*]: user is deleted by developer
 ```
 
-#### Account creation/redemption sequence diagrams
+#### Create-account sequence diagram
 
 ```mermaid
 sequenceDiagram
@@ -122,6 +137,8 @@ sequenceDiagram
     Backend->>Frontend: Success message
     Backend->>-Frontend: Failure message
 ```
+
+#### Forgot-password sequence diagram
 
 ```mermaid
 sequenceDiagram
@@ -185,79 +202,8 @@ Can be found at [this link](https://stately.ai/registry/editor/313df10f-254d-43a
 
 #### XSTATE State Machine Description
 
-```typescript
-createMachine({
-      "id": "Decluttering-Case State Diagram",
-  "initial": "Created",
-  "states": {
-    "Created": {
-      "on": {
-        "Manager assigns case": {
-          "target": "Assigned"
-        },
-        "Manager closes": {
-          "target": "Closed"
-        }
-      }
-    },
-    "Assigned": {
-      "on": {
-        "Inspector declines": {
-          "target": "Created"
-        },
-        "Inspector accepts": {
-          "target": "Confirmed"
-        },
-        "Manager closes": {
-          "target": "Closed"
-        },
-        "Manager reassigns": {}
-      }
-    },
-    "Confirmed": {
-      "on": {
-        "Inspector completes data": {
-          "target": "Ready"
-        },
-        "Inspector fills data": {
-          "target": "Ongoing"
-        },
-        "Manager closes": {
-          "target": "Closed"
-        }
-      }
-    },
-    "Closed": {},
-    "Ongoing": {
-      "on": {
-        "Inspector completes data": {
-          "target": "Ready"
-        },
-        "Manager closes": {
-          "target": "Closed"
-        }
-      }
-    },
-    "Ready": {
-      "on": {
-        "Manager sends quote": {
-          "target": "Quoted"
-        }
-      }
-    },
-    "Quoted": {}
-  }
-,
-    schema: {
-      context: {} as {
-        
-      },
-      events: {} as {"type": "Manager assigns case"}| {"type": "Manager sends quote"}| {"type": "Inspector completes data"}| {"type": "Inspector declines"}| {"type": "Inspector accepts"}| {"type": "Manager closes"}| {"type": "Inspector fills data"}| {"type": "Manager reassigns"}
-    },
-   context: {},
-   predictableActionArguments: true,
-   preserveActionOrder: true,
-  })
+```Typescript
+// Can be exported from the link above, omitted for brevity
 ```
 
 ### Notes
@@ -283,10 +229,9 @@ Find documentation [here](https://fastify-swagger-api.glitch.me/docs/static/inde
 
 ## Database Schema
 
-_IN_PROGRESS_
+This is currently being generated from a declarative `.prisma` code source (check https://arkadiyshin.github.io/prisma-template/ and https://github.com/arkadiyshin/prisma-template).
 
 ```mermaid
-
 %%{init: {'theme':'base'}}%%
 erDiagram
     
