@@ -18,7 +18,7 @@ As the Backend enters testing and gets deployed, we are able to change these med
 
 ## Current list of functions
 
-
+```
   apiGetAppointments,
   apiPostAppointment,
   apiGetAppointmentById,
