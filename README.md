@@ -7,6 +7,7 @@
 1. Schema documentation: https://arkadiyshin.github.io/prisma-template/
 1. Provisional REST API endpoints: https://fastify-swagger-api.glitch.me/docs/static/index.html#/
 1. Design in Figma: https://www.figma.com/file/nYlgCL7yWXHEcpTHgwzYgu/Untitled?node-id=0%3A1
+1. Manager/Inspector TODO's (UI/Wireframe concept): [link to document in this repo](./ui_concept_todos.md)
 
 # 2022-07-EN-Berlin-Remote1-Project3Planning
 Contains the planning and the design documentation for the industry project with REMONDIS group.
