@@ -25,6 +25,7 @@ As the Backend enters testing and gets deployed, we are able to change these med
   apiPutAppointmentById,
   apiDeleteAppointmentById,
   apiGetCases,
+  apiGetCasesToDo,
   apiPostCases,
   apiGetCasesById,
   apiPatchCaseById,
