@@ -39,7 +39,7 @@ Please find the steps to launch the backend below (note that you will need a sec
 
 1. Clone the [backend](https://github.com/WildCodeSchool/2022-07-EN-Berlin-Remote1-Project3Backend) repository, preferably to a folder named `REMONDISBackend` and `cd` into it as follows:
     ```bash
-    git clone https://github.com/WildCodeSchool/2022-07-EN-Berlin-Remote1-Project3Backend REMONDISBackend
+    git clone git@github.com:WildCodeSchool/2022-07-EN-Berlin-Remote1-Project3Backend.git REMONDISBackend
     cd REMONDISBackend
     ```
 1. If using a version of NodeJS other than 16.x (for example, version 14 or 18), then use `nvm` to install and/or switch to the recommended version:
@@ -81,7 +81,7 @@ Please find the steps to launch the frontend, note that some of the steps are si
 
 1. Clone the [frontend](https://github.com/WildCodeSchool/2022-07-EN-Berlin-Remote1-Project3Frontend) repository, preferably to a folder named `REMONDISFrontend` and `cd` into it:
     ```bash
-    git clone https://github.com/WildCodeSchool/2022-07-EN-Berlin-Remote1-Project3Frontend REMONDISFrontend
+    git clone git@github.com:WildCodeSchool/2022-07-EN-Berlin-Remote1-Project3Frontend.git REMONDISFrontend
     cd REMONDISFrontend
     ```
 1. If using a version of NodeJS other than 16.x (for example, 14 or 18), use `nvm` to install and/or switch to the right version:
