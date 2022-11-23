@@ -35,7 +35,7 @@ For more details go to [README](https://github.com/WildCodeSchool/2022-07-EN-Ber
 * create `.env` file and fill enviromental variables following the [`.env.sample`](https://github.com/WildCodeSchool/2022-07-EN-Berlin-Remote1-Project3Frontend/blob/master/.env.sample).
 
 >
-> **NOTE** in `.env` file the variable REACT_APP_BASE_API_URL schould link to your local **backend**. Example `http://localhost:3000`
+> **NOTE** in `.env` file the variable REACT_APP_BASE_API_URL schould link to your local **backend**. Example `http://localhost:4000`
 >
 
 * run `npm start` script to build and start app.
