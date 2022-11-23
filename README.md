@@ -56,7 +56,7 @@ Please find the steps to launch the backend below (note that you will need a sec
 1. Run `npm start` to build and start the backend, also called the server.
 1. In another console window, navigate to `REMONDISBackend` and run the following command to explore the data in the local/remote database (this is the database with the _connection string_ in the `DATABASE_URL` variable in the secrets `.env` file):
     ```bash
-    npx prisma migrate dev
+    npx prisma studio
     ```
 1. In case the command above did not work, run the following command first, then try again:
     ```bash
