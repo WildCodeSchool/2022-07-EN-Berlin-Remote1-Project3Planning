@@ -1,7 +1,7 @@
 ![](./resources/pitch_scaled.jpeg)
 
-<sup>(1) Modern design: [Figma](https://www.figma.com/file/nYlgCL7yWXHEcpTHgwzYgu/Untitled?node-id=0%3A1)</sup>  
-<sup>(2) Todo-based concept: [state machine](https://github.com/WildCodeSchool/2022-07-EN-Berlin-Remote1-Project3Planning/blob/main/PLANNING.md#de-cluettering-case-states)/[analytical solution](https://github.com/WildCodeSchool/2022-07-EN-Berlin-Remote1-Project3Planning/blob/main/ui_concept_todos.md)</sup>
+<sup>(1) Modern design: [Figma](https://www.figma.com/file/nYlgCL7yWXHEcpTHgwzYgu/Untitled?node-id=0%3A1) - check page 1 and page 2</sup>  
+<sup>(2) Todo-based concept: [states](https://github.com/WildCodeSchool/2022-07-EN-Berlin-Remote1-Project3Planning/blob/main/PLANNING.md#de-cluettering-case-states)/[analysis](https://github.com/WildCodeSchool/2022-07-EN-Berlin-Remote1-Project3Planning/blob/main/ui_concept_todos.md)</sup>
 # WCS & REMONDIS GROUP
 
 This project is the result of a joint collaboration between _Wild Code School_ and _REMONDIS Group_
