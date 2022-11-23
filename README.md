@@ -114,4 +114,4 @@ To communicate with the students directly, either to offer employment or interns
 
 ### Links
 
-More information and details (including extensive design documentation and various links) can be found in the [planning document](./PLANNING.md) in this rep.
+More information and details (including extensive design documentation and various links) can be found in the [planning document](./PLANNING.md)
