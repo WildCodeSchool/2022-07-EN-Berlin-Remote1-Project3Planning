@@ -14,10 +14,9 @@ A group of 8 students worked along with their instructor to conceptualise and ge
 pie showData
     title Contributions to the Frontend (in no. of commits)
     "arkadiyshin" : 124
-    "Kryvetskyi Serhii" : 116
+    "KryvetskyiSerhii" : 178
     "SVKasatik" : 75
     "OleksandrRo" : 65
-    "KryvetskyiSerhii" : 62
     "Kravchuk Andrey" : 49
     "manisha sinha" : 35
     "oleksandrsokaliuk" : 35
