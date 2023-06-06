@@ -8,33 +8,6 @@ This project is the result of a joint collaboration between _Wild Code School_ a
 
 A group of 8 students worked along with their instructor to conceptualise and get as close as possible to building a working mobile app for REMONDIS' de-cluttering companies/partners
 
-## Contributors
-
-```mermaid
-pie showData
-    title Contributions to the Frontend (in no. of commits)
-    "arkadiyshin" : 124
-    "KryvetskyiSerhii" : 178
-    "SVKasatik" : 75
-    "OleksandrRo" : 65
-    "Kravchuk Andrey" : 49
-    "manisha sinha" : 35
-    "oleksandrsokaliuk" : 35
-    "Tetre101" : 19
-    "Andrey Kravchuk" : 4
-    "Carly7004" : 3
-```
-
-```mermaid
-pie showData
-    title Contributions to the Backend (in no. of commits)
-    "arkadiyshin" : 181
-    "oleksandrsokaliuk" : 18
-    "Kravchuk Andrey" : 10
-    "Arkadii Shyn" : 4
-    "Carly7004" : 3
-```
-
 ## State of Application
 
 The application is at a _Proof of Concept_ (POC) stage with some _real_ and some _mocked_ features. The definition of either feature category can be found below:
